@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			* {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			
+			canvas {
+				/*width: 350px;
+				height: 350px;*/
+				border: 1px solid #000000;
+				background: url("../static/images/loading.gif") no-repeat center center;
+				background-size: 15px auto;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				$('.cvs').each(function() {
+					var imgSrc = $(this).data("src");
+                    //定义一个图片对象
+                    var imageObj = new Image();
+                    imageObj.cvs = this;//让imageObj图像对象的自定义的cvs属性指向canvas元素
+                    var ctx = this.getContext('2d');
+                    if (ctx) {
+                    	imageObj.src = imgSrc;
+                        imageObj.onload = function () {
+                            imageObj.cvs.width = this.width;
+                            imageObj.cvs.height = this.height;
+                            ctx.drawImage(this, 0, 0);
+                            /*图片渲染好了之后把背景去掉*/
+                            $(imageObj.cvs).css("background-image", "none");
+                        }
+                    }
+				});
+			}
+		</script>
+	</head>
+
+	<body>
+		<ul id="content">
+			<li><canvas class="cvs" data-src="../static/images/product/product1.png"></canvas></li>
+			<li><canvas class="cvs" data-src="../static/images/product/product1.png"></canvas></li>
+			<li><canvas class="cvs" data-src="../static/images/product/product1.png"></canvas></li>
+
+		</ul>
+	</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<ul>
+			<li><input type="button" value="-" class="reduce" /><input type="text" class="i" value="1" /><input type="button" value="+" class="add" /></li>
+			<li><input type="button" value="-" class="reduce" /><input type="text" class="i" value="1" /><input type="button" value="+" class="add" /></li>
+			<li><input type="button" value="-" class="reduce" /><input type="text" class="i" value="1" /><input type="button" value="+" class="add" /></li>
+		</ul>
+		<script type="text/javascript">
+			$(function() {
+				$('.add').on('click', function() {
+					var number = parseInt($(this).prev().val());
+					if(!isNaN(number)) {
+						if(number < 1) {
+							number = 1;
+						} else {
+							number += 1;
+						}
+					} else {
+						number = 1;
+					}
+					$(this).prev().val(number);
+					$(this).prev().trigger('change');
+				});
+				$('.reduce').on('click', function() {
+					var number = parseInt($(this).next().val());
+					if(!isNaN(number)) {
+						if(number < 2) {
+							number = 1;
+						} else {
+							number -= 1;
+						}
+					} else {
+						number = 1
+					}
+					$(this).next().val(number);
+					$(this).next().trigger('change');
+				});
+				$('.i').on('change',function(){
+					console.log(this.value);
+				});
+			});
+		</script>
+	</body>
+
+</html>

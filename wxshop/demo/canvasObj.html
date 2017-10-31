@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<canvas data-a="images/product/product1.png"></canvas></div>
+			</li>
+			<li>
+				<canvas data-a="images/product/product2.png"></canvas></div>
+			</li>
+			<li>
+				<canvas data-a="images/product/product3.png"></canvas></div>
+			</li>
+			<li>
+				<canvas data-b="images/product/product4.png"></canvas></div>
+			</li>
+		</ul>
+		<script type="text/javascript">
+			var cvs = $('canvas');
+			cvs.each(function(){
+				console.log($(this).data('a'));
+			});
+		</script>
+	</body>
+</html>
